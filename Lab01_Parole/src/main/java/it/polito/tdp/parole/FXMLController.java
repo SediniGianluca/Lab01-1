@@ -28,6 +28,9 @@ public class FXMLController {
 
     @FXML
     private TextArea txtResult;
+    
+    @FXML
+    private Button btnCancella;
 
     @FXML
     private Button btnReset;
@@ -48,6 +51,11 @@ public class FXMLController {
     void doReset(ActionEvent event) {
     	elenco.reset();
     	txtResult.clear();
+    }
+    
+    @FXML
+    void doCancella(ActionEvent event) {
+    	
     }
 
     @FXML
