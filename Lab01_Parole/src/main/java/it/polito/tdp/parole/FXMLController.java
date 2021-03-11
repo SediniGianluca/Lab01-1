@@ -30,6 +30,9 @@ public class FXMLController {
     private TextArea txtResult;
     
     @FXML
+    private TextArea txtTime;
+    
+    @FXML
     private Button btnCancella;
 
     @FXML
@@ -38,13 +41,16 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
     	String parole = txtParola.getText();
+    	double start=System.nanoTime();
     	elenco.addParola(parole);
+    	double stop=System.nanoTime();
     	txtParola.clear();
     	String s="";
     	for(String p:elenco.getElenco()) {
     		s=s+p+"\n";
     	}
     	txtResult.setText(s);
+    	txtTime.setText(Double.toString(stop-start));
     }
 
     @FXML
@@ -55,7 +61,17 @@ public class FXMLController {
     
     @FXML
     void doCancella(ActionEvent event) {
-    	
+    	String p=txtResult.getSelectedText();
+    	double start=System.nanoTime();
+    	elenco.cancella(p);
+    	double stop=System.nanoTime();
+    	txtResult.clear();
+    	String s="";
+    	for(String d:elenco.getElenco()) {
+    		s=s+d+"\n";
+    	}
+    	txtResult.setText(s);
+    	txtTime.setText(Double.toString(stop-start));
     }
 
     @FXML
